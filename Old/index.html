@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SN Integrity </title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            min-height: 100%;
+            height: 100%;
+        }
+        
+        body {
+            background: url("images/banner-1.jpg") no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+            letter-spacing: 2px;
+        }
+        
+        .main-content {
+            color: #fff;
+            text-align: center;
+            padding-top: 40px;
+            font-family: 'Lato', sans-serif;
+            overflow: auto;
+            max-height: 100%;
+            width: 100%;
+        }
+        
+        h1 {
+            font-size: 4em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .alert {
+            display: none;
+        }
+        
+        .form-control {
+            border-radius: 0px;
+            padding: 20px 18px;
+        }
+        
+        .btn-primary {
+            color: #fff;
+            background-color: #e2104c;
+            border-color: #e2104c;
+            border-radius: 0px;
+            padding: 10px 20px;
+            transition: all .3s ease-in-out;
+        }
+        
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #222;
+            border-color: #222;
+        }
+        
+        body#background-img {
+            position: relative;
+        }
+        
+        #background-img:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #3d6eb0;
+            z-index: -1;
+            height: 100%;
+            opacity: .2;
+        }
+        
+        .countdown-container {
+            position: relative;
+            top: 50%;
+            max-width: 700px;
+            margin: auto;
+        }
+        
+        .clock-item .inner {
+            height: 0px;
+            padding-bottom: 100%;
+            position: relative;
+            width: 100%;
+        }
+        
+        .clock-canvas {
+            background-color: rgba(255, 255, 255, .1);
+            border-radius: 50%;
+            height: 0px;
+            padding-bottom: 100%;
+        }
+        
+        .text {
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: -50px;
+            position: absolute;
+            top: 50%;
+            text-align: center;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+            width: 100%;
+        }
+        
+        .text .val {
+            font-size: 40px;
+        }
+        
+        .text .type-time {
+            font-size: 18px;
+        }
+        
+        @media (min-width: 768px) and (max-width: 991px) {
+            .clock-item {
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .clock-item {
+                margin: 0px 30px 30px 30px;
+            }
+        }
+        
+        .mb30 {
+            margin-bottom: 30px;
+        }
+        
+        .mb50 {
+            margin-bottom: 50px;
+        }
+        
+        .about {
+            max-width: 700px;
+            letter-spacing: 1px;
+            margin: auto;
+        }
+        
+        .pad-btm30 {
+            padding-bottom: 30px;
+        }
+        
+        .pad-btm50 {
+            padding-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body id="background-img">
+    <div class="main-content">
+        <div class="container">
+            <p class="text-center"><img src="images/logo1.png" alt="logo"></p>
+            <h1 class="pad-btm30">Coming Soon</h1>
+            <div class="countdown countdown-container pad-btm50">
+                <div class="clock row">
+                    <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
+                        <div class="wrap">
+                            <div class="inner">
+                                <div id="canvas-days" class="clock-canvas"></div>
+
+                                <div class="text">
+                                    <p class="val">0</p>
+                                    <p class="type-days type-time">DAYS</p>
+                                </div>
+                                <!-- /.text -->
+                            </div>
+                            <!-- /.inner -->
+                        </div>
+                        <!-- /.wrap -->
+                    </div>
+                    <!-- /.clock-item -->
+
+                    <div class="clock-item clock-hours countdown-time-value col-sm-6 col-md-3">
+                        <div class="wrap">
+                            <div class="inner">
+                                <div id="canvas-hours" class="clock-canvas"></div>
+
+                                <div class="text">
+                                    <p class="val">0</p>
+                                    <p class="type-hours type-time">HOURS</p>
+                                </div>
+                                <!-- /.text -->
+                            </div>
+                            <!-- /.inner -->
+                        </div>
+                        <!-- /.wrap -->
+                    </div>
+                    <!-- /.clock-item -->
+
+                    <div class="clock-item clock-minutes countdown-time-value col-sm-6 col-md-3">
+                        <div class="wrap">
+                            <div class="inner">
+                                <div id="canvas-minutes" class="clock-canvas"></div>
+
+                                <div class="text">
+                                    <p class="val">0</p>
+                                    <p class="type-minutes type-time">MINUTES</p>
+                                </div>
+                                <!-- /.text -->
+                            </div>
+                            <!-- /.inner -->
+                        </div>
+                        <!-- /.wrap -->
+                    </div>
+                    <!-- /.clock-item -->
+
+                    <div class="clock-item clock-seconds countdown-time-value col-sm-6 col-md-3">
+                        <div class="wrap">
+                            <div class="inner">
+                                <div id="canvas-seconds" class="clock-canvas"></div>
+
+                                <div class="text">
+                                    <p class="val">0</p>
+                                    <p class="type-seconds type-time">SECONDS</p>
+                                </div>
+                                <!-- /.text -->
+                            </div>
+                            <!-- /.inner -->
+                        </div>
+                        <!-- /.wrap -->
+                    </div>
+                    <!-- /.clock-item -->
+                </div>
+                <!-- /.clock -->
+            </div>
+            <!-- /.countdown-wrapper -->
+            <div class="text-center about pad-btm30">
+                <p>SN Integrity specialise in inspection, testing & asset integrity solutions. With an unparalleled depth of experience and expertise in the highly specialized fields of ultrasonic and remote visual technologies, the SN Integrity team brings
+                    together the very best minds in the business to deliver smarter solutions.</p>
+            </div>
+            <form class="contact-form" method="POST" style="max-width:800px;margin:0 auto;">
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" required="" class="form-control" name="fname" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" required="" class="form-control" name="email" placeholder="Email Address ">
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="lname" placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" required="" class="form-control" name="phone" placeholder="Phone Number">
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <textarea required="" class="form-control" rows="5" name="message" placeholder="Message"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary " style="margin-top:20px;margin-bottom:20px;">Submit</button>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="enquiry" value="kjsdh">
+                <p class="alert"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/rainyday.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            new RainyDay({
+                image: 'background-img' // [Required][Image Id or Image element itself, Id of Element having background Image or Element itself]
+            })
+        });
+        $('.contact-form').submit(function() {
+            $(this).find('button').attr('disabled', true);
+            $.ajax({
+                url: "mail.php",
+                type: "POST",
+                data: $(this).serialize(),
+                success: function(res) {
+                    if (res == 1) {
+                        $('.alert').addClass('alert-success').text('Thank you for contacting us!').fadeIn();
+                        $('.contact-form')[0].reset();
+                    } else {
+                        $('.alert').addClass('alert-danger').text('Oops! Something went wrong please try again later!').fadeIn();
+                    }
+                    $('.contact-form').find('button').attr('disabled', false);
+                    setTimeout(function() {
+                        $('.alert').fadeOut();
+                    }, 4000);
+                }
+            });
+            return false;
+        });
+    </script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="js/kinetic.js"></script>
+    <script src="js/jquery.final-countdown.js"></script>
+    <script type="text/javascript">
+        $('document').ready(function() {
+            'use strict';
+
+            $('.countdown').final_countdown({
+                'start': 1362139200,
+                'end': 1388461320,
+                'now': 1387461319
+            });
+        });
+    </script>
+</body>
+
+</html>
